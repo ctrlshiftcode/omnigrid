@@ -17,7 +17,7 @@ To run:
 bun start
 ```
 
-Aplicação publicada: [https://omnigrid.onrender.com/](https://omnigrid.onrender.com/) <br>
+Demo: [https://omnigrid.onrender.com/](https://omnigrid.onrender.com/) <br>
 Hosted in https://render.com/
 
 
