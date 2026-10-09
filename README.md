@@ -17,6 +17,8 @@ To run:
 bun start
 ```
 
+Aplicação publicada: [https://omnigrid.onrender.com/](https://omnigrid.onrender.com/)
+
 ## Screenshots
 
 ### CSV import
