@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: omni-dark --default;
+}
+@plugin "daisyui/theme" {
+  name: "omni-dark";
+  default: true;
+  color-scheme: dark;
+  --color-base-100: #171624;
+  --color-base-200: #211f33;
+  --color-base-300: #36334b;
+  --color-base-content: #f3f1ff;
+  --color-primary: #806dee;
+  --color-primary-content: #ffffff;
+  --color-secondary: #a187f0;
+  --color-secondary-content: #171624;
+  --color-accent: #c1a0f7;
+  --color-accent-content: #211833;
+  --color-neutral: #100f1a;
+  --color-neutral-content: #f3f1ff;
+  --color-info: #81b1ee;
+  --color-info-content: #151a2b;
+  --color-success: #82c9a5;
+  --color-success-content: #102019;
+  --color-warning: #e6bb6b;
+  --color-warning-content: #211a0d;
+  --color-error: #e68a9b;
+  --color-error-content: #271219;
+}
+@source "./index.html";
+@source "./app.js";
+
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+:root {
+  --palette-violet-1: #4f46e5;
+  --palette-violet-2: #6557e8;
+  --palette-violet-3: #806dee;
+  --palette-violet-4: #a187f0;
+  --palette-violet-5: #c1a0f7;
+  color-scheme: dark;
+  font-family: "DM Sans", sans-serif;
+  background: #100f1a;
+}
+
+body {
+  min-width: 320px;
+  background-color: #100f1a;
+  background-image:
+    linear-gradient(rgba(193, 160, 247, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(193, 160, 247, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.csv-dropzone {
+  background-color: #171624;
+  background-image: linear-gradient(90deg, var(--palette-violet-1) 0 20%, var(--palette-violet-2) 20% 40%, var(--palette-violet-3) 40% 60%, var(--palette-violet-4) 60% 80%, var(--palette-violet-5) 80% 100%);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100% 4px;
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+
+.csv-dropzone.is-dragging {
+  border-color: var(--palette-violet-4);
+  background-color: #211f33;
+  box-shadow: 0 0 0 3px rgba(161, 135, 240, 0.16);
+}
+
+.app-sidebar {
+  background: #100f1a;
+  color: #f3f1ff;
+}
+
+.chart-grid {
+  background-image: linear-gradient(to bottom, rgba(193, 160, 247, 0.12) 1px, transparent 1px);
+  background-size: 100% 25%;
+}
+
+.chart-bar {
+  min-height: 8px;
+  background: var(--palette-violet-1);
+}
+
+.chart-bar:nth-child(3n) {
+  background: var(--palette-violet-3);
+}
+
+.chart-bar:last-child {
+  background: var(--palette-violet-5);
+}

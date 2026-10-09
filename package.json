@@ -1,0 +1,24 @@
+{
+  "name": "omni-grid",
+  "module": "src/server.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build:css": "bun run tailwindcss -i ./src/web/styles.css -o ./src/web/tailwind.generated.css --minify",
+    "build:js": "bun build ./src/web/app.js --target=browser --outfile=./src/web/app.generated.js --minify",
+    "start": "bun run build:css && bun run build:js && bun run src/server.ts"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@types/bun": "latest",
+    "daisyui": "^5.7.47",
+    "papaparse": "^5.7.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  },
+  "dependencies": {
+    "figlet": "^1.12.0"
+  }
+}
