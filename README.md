@@ -31,6 +31,28 @@ bun start
 
 ![Selecting a CSV file, loading its rows, and sorting the table](screenshots/omnigrid-workflow.gif)
 
+## Code map
+
+| Path | Responsibility |
+| --- | --- |
+| `src/server.ts` | Application entry point. Starts `Bun.serve`, serves the HTML and generated frontend assets, injects `APP_TITLE`, and registers API routes. The port comes from `PORT` or defaults to `3000`. |
+| `src/routes/index.ts` | Collects the API route handlers, including `/figlet` and the health route. |
+| `src/routes/health.ts` | Implements the health response; its path is built from `API_CONTEXT_PATH` in `src/config/api.ts`. |
+| `src/config/app.ts` | Defines the shared application title. |
+| `src/web/index.html` | Defines the import controls and table markup used by the browser code. |
+| `src/web/app.js` | Handles file selection, CSV parsing, table rendering, sorting, feedback, and clearing the current file. |
+| `src/web/styles.css` | Tailwind entry point and custom daisyUI theme. |
+| `src/web/app.generated.js`, `src/web/tailwind.generated.css` | Browser bundles built by the `build:js` and `build:css` scripts; edit their source files instead. |
+| `test-data/omni-grid-500.csv` | Sample CSV for trying the import and table preview. |
+
+### CSV import flow
+
+1. Choosing or dropping a file calls `chooseFile`, which accepts `.csv` files up to 50 MB and resets any previous preview.
+2. `parseSelectedFile` passes the file to PapaParse in the browser. The delimiter is detected automatically, blank lines are skipped, and the first row supplies the column names.
+3. `renderTable` creates the table from the parsed values. Cells are populated with `textContent`, and missing values are displayed as empty cells.
+4. Clicking a column heading sorts ascending; clicking it again reverses the order. Numeric values are compared numerically, other values use a numeric-aware English collator, and blank values stay last.
+5. `clear-button` resets the selected file, parsed rows, and preview so another CSV can be loaded.
+
 ## Frontend
 
 The page at `/` is a static HTML dashboard styled with Tailwind CSS 4 and daisyUI 5. Its CSS entry point is `src/web/styles.css`:
